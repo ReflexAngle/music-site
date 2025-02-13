@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MVC??</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="ButtonNavigation" href="ButtonNavigation.js">
 </head>
 
 <header>
@@ -60,7 +61,7 @@
             <button id="nextLeft">L</button>
         </div>
 
-        <audio controls class="playSong">
+        <audio controls id="playSong">
             <source src="./ToontownCorporateClash.mp3" type="audio/mpeg">
         </audio>
 
@@ -70,30 +71,28 @@
     </form>
 </body>
 <style>
-    .playSong{
-        position: fixed;
+
+    #playSong{
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #addSong, #selectRandom, #aboutSite{
+        background: #c0c0c0;
+        color: aliceblue;
+
     }
 
 </style>
 
-<script>
+<script src="ButtonNavigation.js">
     //basic functionality
-    const buttonAdd = document.getElementById('addSong');
-    const randomSong = document.getElementById('selectRandom');
-    const aboutSitePage = document.getElementById('aboutSite');
+    
     const rightButton = document.getElementById('nextRight');
     const leftButton = document.getElementById('nextLeft');
 
 
-    buttonAdd.addEventListener('click', function(){ // takes us to the page to add a song
-        window.location.href="AddSong.html";
-    });
-    randomSong.addEventListener('click', function(){ // selects a random song
-        alert("Random");
-    });
-    aboutSitePage.addEventListener('click', function(){
-        alert("About");
-    });
     rightButton.addEventListener('click', function(){
         alert("move right");
     });

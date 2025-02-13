@@ -2,6 +2,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Add Song</title>
+  <link rel="stylesheet" href="main.css">
+  <header>
+    <div class="mp-header">
+        Add Song
+    </div>
+</header>
+
   <style>
     #dropBox {
       border: 2px solid #ccc;
@@ -25,9 +32,26 @@
 </head>
 <body>
   <div id="dropBox">Drop your files here</div>
+  <p id="fileInfo">Blank</p> <!--Idealy the file name will appear here eventually-->
 
+  <div id="Info">
+    <h3>Song Name</h3>
+    <input type="text"/>
+    <h3>Artist Name</h3>
+    <input type="text"/>
+    <h3>Genre</h3>
+    <input type="text"/>
+    <h3>How does it make you feel</h3>
+    <input type="text"/>
+
+  </div>
+  <div id="submissionButtons">
+    <button id="submitToDB">Submit</button>
+    <button id="BackToHome">Home</button>
+  </div>
   <script>
     const dropBox = document.getElementById('dropBox');
+    const fileInfo = document.getElementById('fileInfo');
 
     // Prevent default behavior for drag events on dropBox.
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
@@ -50,13 +74,14 @@
     dropBox.addEventListener('drop', function(e) {
       dropBox.classList.remove('highlight');
       const files = e.dataTransfer.files;
-      console.log('Dropped files:', files);
+      alert('Dropped files:', files);
 
      Array.from(files).forEach(files =>{
         //checks if the file is an mp3
         if (file.type === 'audio/mpeg' || file.name.toLowerCase().endsWith('.mp3')) {
           console.log('MP3 file:', file.name);
           // Process the MP3 file here
+          filesInfo.textContent = file.name;
         } else {
           console.log('Not an MP3 file:', file.name);
           alert(`File "${file.name}" is not an MP3 file. Please drop only MP3 files!`);
@@ -66,23 +91,25 @@
       });
     });
   </script>
-  <p id="fileInfo">Blank</p> <!--Idealy the file name will appear here eventually-->
-  <div id="Info">
-    <h3>Song Name</h3>
-    <input type="text"/>
-    <h3>Artist Name</h3>
-    <input type="text"/>
-    <h3>Genre</h3>
-    <input type="text"/>
-    <h3>How does it make you feel</h3>
-    <input type="text"/>
-
-  </div>
 </body>
 <style>
-    .Info{
+   #Info, #submissionButtons, #fileInfo{
         text-align: center;
-
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+
 </style>
+<script>
+    const buttonSubmit = document.getElementById('submitToDB');
+    const ButtonBackHome = document.getElementById('BackToHome');
+
+    buttonSubmit.addEventListener('click', function(){ // selects a random song
+        alert("Submitted"); // good enough for now
+    });
+    ButtonBackHome.addEventListener('click', function(){
+        window.location.href="index.html";
+    });
+</script>
 </html>
