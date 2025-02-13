@@ -76,24 +76,14 @@
 
 </style>
 
-<script>
+<script src="ButtonNavigation.js">
     //basic functionality
-    const buttonAdd = document.getElementById('addSong');
-    const randomSong = document.getElementById('selectRandom');
-    const aboutSitePage = document.getElementById('aboutSite');
+
     const rightButton = document.getElementById('nextRight');
     const leftButton = document.getElementById('nextLeft');
 
 
-    buttonAdd.addEventListener('click', function(){ // takes us to the page to add a song
-        window.location.href="AddSong.html";
-    });
-    randomSong.addEventListener('click', function(){ // selects a random song
-        alert("Random");
-    });
-    aboutSitePage.addEventListener('click', function(){
-        alert("About");
-    });
+   
     rightButton.addEventListener('click', function(){
         alert("move right");
     });

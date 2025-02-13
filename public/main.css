@@ -1,9 +1,14 @@
+body{
+  background: #0c0c0c;
+}
+
 .mp-header {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 25vh; /* Adjust the height as needed */
-  background-color: #f0f0f0; /* Adjust the background color as needed */
+  background-color: aliceblue; /* Adjust the background color as needed */
+  color: #0c0c0c;
   font-size: 24px; /* Adjust the font size as needed */
   text-align: center;
   font-family: "ubuntu";
