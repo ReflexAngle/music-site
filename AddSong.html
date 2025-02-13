@@ -15,6 +15,7 @@
       transition: background-color 0.3s, border-color 0.3s;
     }
     /* Highlight effect when dragging over the dropBox */
+    /* This will only work if the mouse is holding a file to add the effect*/
     #dropBox.highlight {
       background-color: #f0f0f0;
       border-color: #333;
@@ -59,9 +60,29 @@
         } else {
           console.log('Not an MP3 file:', file.name);
           alert(`File "${file.name}" is not an MP3 file. Please drop only MP3 files!`);
+
+          // when azure is set up will write logic to store mp3's in there.
         }
       });
     });
   </script>
+  <p id="fileInfo">Blank</p> <!--Idealy the file name will appear here eventually-->
+  <div id="Info">
+    <h3>Song Name</h3>
+    <input type="text"/>
+    <h3>Artist Name</h3>
+    <input type="text"/>
+    <h3>Genre</h3>
+    <input type="text"/>
+    <h3>How does it make you feel</h3>
+    <input type="text"/>
+
+  </div>
 </body>
+<style>
+    .Info{
+        text-align: center;
+
+    }
+</style>
 </html>
