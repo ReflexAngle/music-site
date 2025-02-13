@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Song</title>
+  <style>
+    #dropBox {
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      width: 300px;
+      height: 200px;
+      text-align: center;
+      line-height: 200px;
+      color: #aaa;
+      margin: 20px auto;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+    /* Highlight effect when dragging over the dropBox */
+    #dropBox.highlight {
+      background-color: #f0f0f0;
+      border-color: #333;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div id="dropBox">Drop your files here</div>
+
+  <script>
+    const dropBox = document.getElementById('dropBox');
+
+    // Prevent default behavior for drag events on dropBox.
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      dropBox.addEventListener(eventName, function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+    });
+
+    // Add a visual cue when files are dragged over the box.
+    dropBox.addEventListener('dragover', function() {
+      dropBox.classList.add('highlight');
+    });
+
+    dropBox.addEventListener('dragleave', function() {
+      dropBox.classList.remove('highlight');
+    });
+
+    // Handle file drop
+    dropBox.addEventListener('drop', function(e) {
+      dropBox.classList.remove('highlight');
+      const files = e.dataTransfer.files;
+      console.log('Dropped files:', files);
+
+     Array.from(files).forEach(files =>{
+        //checks if the file is an mp3
+        if (file.type === 'audio/mpeg' || file.name.toLowerCase().endsWith('.mp3')) {
+          console.log('MP3 file:', file.name);
+          // Process the MP3 file here
+        } else {
+          console.log('Not an MP3 file:', file.name);
+          alert(`File "${file.name}" is not an MP3 file. Please drop only MP3 files!`);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
