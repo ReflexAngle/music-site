@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVC??</title>
+</head>
+
+<header>
+    <div class="mp-header">
+        My Music player
+    </div>
+</header>
+
+<body>
+    <div class="nav">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Services</a>
+                    <div class="dropdown-content">
+                        <a href="service1.html">Service 1</a>
+                        <a href="service2.html">Service 2</a>
+                        <a href="service3.html">Service 3</a>
+                    </div>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="serchFunctionality">
+            <select class="dropDown">
+            </select>
+
+        </div>
+        <div class="music-card">
+            <div class="music-img">
+                 <img src="~/Images/123.jpg" alt="Album Cover"/>
+                
+            </div>
+            <div class="music-info">
+                <h2>Song Title: Big Iron</h2>
+                <p>Artist: Marty Robbins</p>
+                <p>Album: El paso</p>
+            </div>
+        </div>
+        <audio controls>
+            <source src="./images/ToontownCorporateClash.mp3" type="audio/mpeg">
+        </audio>
+
+
+    </div>
+    <form>
+        <!--General-->
+
+    </form>
+
+
+</body>
+<style>
+    .mp-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 25vh; /* Adjust the height as needed */
+        background-color: #f0f0f0; /* Adjust the background color as needed */
+        font-size: 24px; /* Adjust the font size as needed */
+        text-align: center;
+        font-family: "ubuntu";
+        font-size: 5em;
+    }
+
+    nav {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 50px; /* Adjust the height as needed */
+        background-color: #242222; /* Adjust the background color as needed */
+        font-size: 24px; /* Adjust the font size as needed */
+        text-align: center;
+    }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background: #0c0c0c;
+        }
+
+        nav li {
+            margin-right: 20px;
+            padding: 5px;
+        }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        background-color: black;
+        color: white;
+        padding: 10px;
+        margin: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            background-color: black;
+            color: white;
+        }
+
+            .dropdown-content a:hover {
+                background-color: #f1f1f1;
+            }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+    }
+
+    .music-card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px; /* Adjust the height as needed /
+background-color: #f0f0f0; / Adjust the background color as needed /
+font-size: 24px; / Adjust the font size as needed */
+        text-align: center;
+    }
+
+    .music-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+</style>
+
+
+
+
+
+<script>
+    //basic functionality
+    //document.addEventListener("DOMContentLoaded", function () {
+    //    var img = new Image();
+    //    img.src = "./images/1234.png"; // Keep the same path, double-check if needed!
+    //    img.alt = "Album Cover";
+
+    //    img.onload = function () {
+    //        alert("Image loaded successfully!");
+    //        // Optionally, append it to the page:
+    //        document.body.appendChild(img);
+    //    };
+
+    //    img.onerror = function () {
+    //        alert("Oops, error loading the image!");
+    //    };
+    //});
+
+</script>
+
