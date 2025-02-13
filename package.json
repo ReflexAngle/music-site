@@ -1,0 +1,19 @@
+{
+  "name": "music-site",
+  "version": "1.0.0",
+  "description": "Music site",
+  "main": "index.js",
+  "scripts": {
+    "test": "hi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Valnkw/music-site.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Valnkw/music-site/issues"
+  },
+  "homepage": "https://github.com/Valnkw/music-site#readme"
+}
