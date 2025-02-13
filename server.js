@@ -4,16 +4,23 @@ const path = require("path");
 
 const app = express();
 
-// 1️⃣ Database Connection String (Adjust Path to Your .accdb File)
-const dbFilePath = path.join(__dirname, "MusicSelect.accdb");
+// 🔹 Enable JSON Parsing for POST & PUT Requests
+app.use(express.json());
+
+// 🔹 Serve Static Files from the "public" folder
+app.use(express.static(path.join(__dirname, "public")));
+
+// 🔗 **Direct Access DB Connection (NO DSN)**
+const dbFilePath = path.join(__dirname, "MusicSelect.accdb"); // Corrected path
 const connectionString =
   "Driver={Microsoft Access Driver (*.mdb, *.accdb)};" + `Dbq=${dbFilePath};`;
 
-// 2️⃣ Middleware
-app.use(express.json()); // Allows Express to parse JSON request bodies
-app.use(express.static(path.join(__dirname, "public"))); // Serves static files like index.html
+// 📌 **Serve index.html for the root route**
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
-// 3️⃣ GET Route: Retrieve All Songs
+// 🎵 **GET All Songs**
 app.get("/songs", async (req, res) => {
   let connection;
   try {
@@ -30,17 +37,22 @@ app.get("/songs", async (req, res) => {
   }
 });
 
-// 4️⃣ POST Route: Add a New Song
+// 🎵 **POST - Add a New Song**
 app.post("/songs", async (req, res) => {
   let connection;
   try {
-    const { title, artist, album } = req.body;
+    const { ArtistName, SongName, Genre, Mood } = req.body;
+
+    if (!ArtistName || !SongName || !Genre || !Mood) {
+      return res.status(400).json({ error: "All fields are required." });
+    }
+
     connection = await odbc.connect(connectionString);
     const statement = await connection.createStatement();
     await statement.prepare(
-      "INSERT INTO Songs (Title, Artist, Album) VALUES (?, ?, ?)"
+      "INSERT INTO Songs (ArtistName, SongName, Genre, Mood) VALUES (?, ?, ?, ?)"
     );
-    await statement.bind([title, artist, album]);
+    await statement.bind([ArtistName, SongName, Genre, Mood]);
     const result = await statement.execute();
     res.status(201).json({ success: true, inserted: result.count });
   } catch (error) {
@@ -53,18 +65,23 @@ app.post("/songs", async (req, res) => {
   }
 });
 
-// 5️⃣ PUT Route: Update an Existing Song
+// 🎵 **PUT - Update an Existing Song**
 app.put("/songs/:id", async (req, res) => {
   let connection;
   try {
-    const { title, artist, album } = req.body;
     const { id } = req.params;
+    const { ArtistName, SongName, Genre, Mood } = req.body;
+
+    if (!ArtistName || !SongName || !Genre || !Mood) {
+      return res.status(400).json({ error: "All fields are required." });
+    }
+
     connection = await odbc.connect(connectionString);
     const statement = await connection.createStatement();
     await statement.prepare(
-      "UPDATE Songs SET Title=?, Artist=?, Album=? WHERE ID=?"
+      "UPDATE Songs SET ArtistName=?, SongName=?, Genre=?, Mood=? WHERE ID=?"
     );
-    await statement.bind([title, artist, album, id]);
+    await statement.bind([ArtistName, SongName, Genre, Mood, id]);
     const result = await statement.execute();
     res.json({ success: true, updated: result.count });
   } catch (error) {
@@ -77,11 +94,12 @@ app.put("/songs/:id", async (req, res) => {
   }
 });
 
-// 6️⃣ DELETE Route: Remove a Song
+// 🎵 **DELETE - Remove a Song**
 app.delete("/songs/:id", async (req, res) => {
   let connection;
   try {
     const { id } = req.params;
+
     connection = await odbc.connect(connectionString);
     const statement = await connection.createStatement();
     await statement.prepare("DELETE FROM Songs WHERE ID=?");
@@ -98,8 +116,8 @@ app.delete("/songs/:id", async (req, res) => {
   }
 });
 
-// 7️⃣ Start Server
+// 🚀 **Start Express Server**
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`✅ Server is running on http://localhost:${PORT}`);
+  console.log(`✅ Server running on http://localhost:${PORT}`);
 });

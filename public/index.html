@@ -1,89 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MVC??</title>
-    <link rel="stylesheet" href="main.css">
-</head>
+    <link rel="stylesheet" href="main.css" />
+  </head>
 
-<header>
-    <div class="mp-header">
-        My Music player
-    </div>
-</header>
+  <header>
+    <div class="mp-header">My Music player</div>
+  </header>
 
-<body>
+  <body>
     <div class="nav">
-        <nav>
-            <ul>
-                <button id="addSong">Add</button>
-                <button id="selectRandom">Random</button>
-                <button id="aboutSite">About</button>
-                <!--add a drop down field here-->
+      <nav>
+        <ul>
+          <button id="addSong">Add</button>
+          <button id="selectRandom">Random</button>
+          <button id="aboutSite">About</button>
+          <!--add a drop down field here-->
 
-                <li class="dropdown">
-                    <label for="sortOptions">Sort by:</label>
-                    <select id="sortOptions" class="dropbtn">
-                        <option value="genre">Genre</option>
-                        <option value="mood">Mood</option>
-                        <option value="artist">Artist</option>
-                    </select>
-                </li>
-            </ul>
-        </nav>
-        <div class="serchFunctionality">
-            <select class="dropDown">
+          <li class="dropdown">
+            <label for="sortOptions">Sort by:</label>
+            <select id="sortOptions" class="dropbtn">
+              <option value="genre">Genre</option>
+              <option value="mood">Mood</option>
+              <option value="artist">Artist</option>
             </select>
+          </li>
+        </ul>
+      </nav>
+      <div class="serchFunctionality">
+        <select class="dropDown"></select>
+      </div>
 
-        </div>
+      <div id="nextRightButton">
+        <button id="nextRight">R</button>
+      </div>
 
-        <div id="nextRightButton">
-            <button id="nextRight">R</button>
+      <div class="changeSong"><!--buttons to switch between songs--></div>
+      <div class="music-card">
+        <div class="music-img">
+          <img src="./images/pumpkin.gif" alt="Album Cover" />
         </div>
+        <div class="music-info">
+          <h2>Song Title: Big Iron</h2>
+          <p>Artist: Marty Robbins</p>
+          <p>Album: El paso</p>
+        </div>
+      </div>
+      <div id="nextLeftButton">
+        <button id="nextLeft">L</button>
+      </div>
 
-        <div class="changeSong"> <!--buttons to switch between songs-->
-            
-        </div>
-        <div class="music-card">
-            <div class="music-img">
-                 <img src="./images/pumpkin.gif" alt="Album Cover"/>
-                
-            </div>
-            <div class="music-info">
-                <h2>Song Title: Big Iron</h2>
-                <p>Artist: Marty Robbins</p>
-                <p>Album: El paso</p>
-            </div>
-        </div>
-        <div id="nextLeftButton">
-            <button id="nextLeft">L</button>
-        </div>
-
-        <audio controls class="playSong">
-            <source src="./ToontownCorporateClash.mp3" type="audio/mpeg">
-        </audio>
-
+      <audio controls class="playSong">
+        <source src="./ToontownCorporateClash.mp3" type="audio/mpeg" />
+      </audio>
     </div>
     <form>
-        <!--General-->
+      <!--General-->
     </form>
-</body>
-<style>
-    .playSong{
-        position: fixed;
+  </body>
+  <style>
+    .playSong {
+      position: fixed;
     }
+  </style>
 
-</style>
-
-<script src="ButtonNavigation.js">
+  <script src="ButtonNavigation.js">
     //basic functionality
 
     const rightButton = document.getElementById('nextRight');
     const leftButton = document.getElementById('nextLeft');
 
 
-   
+
     rightButton.addEventListener('click', function(){
         alert("move right");
     });
@@ -120,6 +111,5 @@
     //        alert("Oops, error loading the image!");
     //    };
     //});
-
-</script>
-
+  </script>
+</html>
