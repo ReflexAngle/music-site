@@ -1,35 +1,59 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="main.css" />
-    <link rel="ButtonNavigation" href="ButtonNavigation.js" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
     <title>Document</title>
-  </head>
-  <header>
-    <div class="mp-header">About</div>
-  </header>
-  <body>
-    <div class="nav">
-      <nav>
-        <ul>
-          <button id="addSong">Add</button>
-          <button id="selectRandom">Random</button>
-          <button id="aboutSite">About</button>
-          <!--add a drop down field here-->
-        </ul>
-      </nav>
+</head>
+<header>
+    <div class="mp-header">
+        About
     </div>
+</header>
+<body>
+    <div class="nav">
+        <nav>
+            <ul>
+                <button id="addSong">Add</button>
+                <button id="selectRandom">Random</button>
+                <button id="aboutSite">About</button>
+                <!--add a drop down field here-->
 
-    <footer>
-      <a id="githubLink" href="https://github.com/ReflexAngle/music-site">
-        <img src="images\GitHub_Logo_White.png" alt="github" />
-      </a>
+                <li class="dropdown">
+                    <a href="" class="dropbtn">Services</a>
+                    <div class="dropdown-content">
+                        <a href="service1.html">Service 1</a>
+                        <a href="service2.html">Service 2</a>
+                        <a href="service3.html">Service 3</a>
+                    </div>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <footer id="BottomPage">
+        <div>
+            <p>Follow the project on </p>
+        <a id="githubLink" href="https://github.com/ReflexAngle/music-site">
+            <img src="images/GitHub_Logo_White.png" alt="github">
+        </a>
+        </div>
     </footer>
-    <script src="ButtonNavigation.js"></script>
     <style>
-      #githubLink {
-      }
+        #githubLink img{
+            width: 10%;
+            height: auto;
+        }
+        #BottomPage {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        margin: 10px;
+    }
     </style>
-  </body>
+    <script src="ButtonNavigation.js">
+
+    </script>
+</body>
 </html>
