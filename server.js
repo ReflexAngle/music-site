@@ -124,14 +124,14 @@ app.use(express.json());
 
 //use node ADODB to interact with access DB
 const ADODB = require('node-adodb');
-const connection = ADODB.open('Provider=Microsoft.ACE.OLEDB.12.0;Data Source=./MusicSelect.accdb;');
+const connection = ADODB.open('Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:/music-site/public/MusicSelect.accdb;');
 
 // Create the endpoint to add a song
 app.post('/addsong', (req, res) => {
   const { songName, artistName, genre, mood } = req.body;
 
   // Construct your SQL query – make sure to sanitize these inputs to avoid SQL injection
-  const query = `INSERT INTO Songs (SongName, Artist, Genre, Mood) VALUES ('${songName}', '${artistName}', '${genre}', '${mood}')`;
+  const query = `INSERT INTO songs (ArtistName, SongName, Genre, Mood) VALUES ('${songName}', '${artistName}', '${genre}', '${mood}')`;
 
   connection.execute(query)
     .then(() => {
