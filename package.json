@@ -18,6 +18,8 @@
   "homepage": "https://github.com/Valnkw/music-site#readme",
   "dependencies": {
     "express": "^4.21.2",
+    "node-adodb": "^5.0.3",
+    "node-odbc": "^0.2.10",
     "odbc": "github:markdirish/node-odbc"
   }
 }

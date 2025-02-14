@@ -1,8 +1,9 @@
 const express = require("express");
 const odbc = require("odbc");
 const path = require("path");
-
 const app = express();
+const port = 3000;
+
 
 // 🔹 Enable JSON Parsing for POST & PUT Requests
 app.use(express.json());
@@ -115,9 +116,41 @@ app.delete("/songs/:id", async (req, res) => {
     }
   }
 });
+// ---------------------------------------//
 
+// insert into DB
+// Middleware to parse JSON bodies
+app.use(express.json());
+
+//use node ADODB to interact with access DB
+const ADODB = require('node-adodb');
+const connection = ADODB.open('Provider=Microsoft.ACE.OLEDB.12.0;Data Source=./MusicSelect.accdb;');
+
+// Create the endpoint to add a song
+app.post('/addsong', (req, res) => {
+  const { songName, artistName, genre, mood } = req.body;
+
+  // Construct your SQL query – make sure to sanitize these inputs to avoid SQL injection
+  const query = `INSERT INTO Songs (SongName, Artist, Genre, Mood) VALUES ('${songName}', '${artistName}', '${genre}', '${mood}')`;
+
+  connection.execute(query)
+    .then(() => {
+      res.json({ success: true });
+    })
+    .catch(error => {
+      console.error(error);
+      res.status(500).json({ success: false, error: error });
+    });
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
+//--------------------------------------//
 // 🚀 **Start Express Server**
-const PORT = 3000;
+const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);
 });
+
